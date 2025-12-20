@@ -3,18 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Custom Domain Site</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GLIZNIK</title>
+    <style>
+        /* Colors & Fonts*/
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #E8E4D9;
+            color: #555555; 
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; /*fuck scrollbars */
+        }
+
+        /*Big GLIZNIK*/
+        .hero-text {
+            font-size: 12rem; 
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 50px;
+            text-transform: uppercase;
+        }
+
+        /*Accessibility Shortcuts*/
+        .shortcuts-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Buttons*/
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .bare-btn {
+            text-decoration: none;
+            color: #555555;
+            border: 1px solid #555555;
+            padding: 10px 25px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .bare-btn:hover {
+            background-color: #555555;
+            color: #E8E4D9; 
+            cursor: pointer;
+        }
+
+        .marquee-container {
+            text-decoration: none; 
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            color: black;
+            padding: 5px 0;
+            overflow: hidden; 
+            white-space: nowrap; 
+            border-top: 1px solid rgb(125, 125, 125);
+            transition: background-color 0.3s, color 0.3s; /* Smooth color swap */
+        }
+
+        /* Hover effect */
+        .marquee-container:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border-top: 1px solid black;
+        }
+
+        /* Pause animation on hover */
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            animation: slideLeft 30s linear infinite;  
+        }
+
+        .marquee-text {
+            font-size: 5rem; 
+            font-weight: 900;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial Black', sans-serif;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            padding-right: 0px; 
+        }
+
+        @keyframes slideLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, Internet!</h1>
-        <p>This site is hosted on my own domain.</p>
+
+    <h1 class="hero-text">GLIZNIK</h1>
+
+    <div class="shortcuts-container">
+        <h2>Accessibility Shortcuts</h2>
         
-        <button id="clickMeBtn">Click for a surprise</button>
-        <p id="message"></p>
+        <div class="btn-group">
+            <a href="https://www.instagram.com/gliznik.ent" target="_blank" class="bare-btn">Instagram</a>
+            <a href="https://www.youtube.com/@gliznik" target="_blank" class="bare-btn">YouTube</a>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <a href="image.html" class="marquee-container">
+        <div class="marquee-track">
+            <span class="marquee-text">Loading... Loading... Loading... Loading... Loading...</span>
+            <span class="marquee-text">Loading... Loading... Loading... Loading... Loading...</span>
+        </div>
+    </a>
+
 </body>
 </html>

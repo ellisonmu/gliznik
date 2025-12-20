@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPRISE</title>
+    <style>
+        body {
+            background-color: #E8E4D9;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            max-width: 30%; 
+            max-height: 95vh;
+            border: 1px solid #555555; 
+            /* box-shadow: 10px 10px 0px rgba(0,0,0,0.1);  */
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #555555;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← Back</a>
+
+    <img src="/egg-head.jpeg" alt="egg-head" />
+
+
+<audio id="bg-music" loop>
+<source src="dance-ass.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('bg-music');
+        const playPromise = audio.play();
+
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log("Autoplay blocked. Waiting for click.");
+                document.addEventListener('click', () => {
+                    audio.play();
+                }, { once: true }); 
+            });
+        }
+    });
+</script>
+</body>
+</html>
