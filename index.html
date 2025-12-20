@@ -17,22 +17,25 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            overflow: hidden; /*fuck scrollbars */
+            overflow: hidden; 
         }
 
-        /*Big GLIZNIK*/
+        /*Big GLIZNIK - Default (Desktop) */
         .hero-text {
             font-size: 12rem; 
             font-weight: 900;
             margin: 0;
             letter-spacing: 50px;
             text-transform: uppercase;
+            text-align: center; 
+            line-height: 1;
         }
 
         /*Accessibility Shortcuts*/
         .shortcuts-container {
             text-align: center;
             margin-top: 20px;
+            z-index: 10; 
         }
 
         h2 {
@@ -67,6 +70,7 @@
             cursor: pointer;
         }
 
+        /* Marquee Bar */
         .marquee-container {
             text-decoration: none; 
             position: fixed;
@@ -79,10 +83,9 @@
             overflow: hidden; 
             white-space: nowrap; 
             border-top: 1px solid rgb(125, 125, 125);
-            transition: background-color 0.3s, color 0.3s; /* Smooth color swap */
+            transition: background-color 0.3s, color 0.3s; 
         }
 
-        /* Hover effect */
         .marquee-container:hover {
             background-color: black;
             color: white;
@@ -90,7 +93,6 @@
             border-top: 1px solid black;
         }
 
-        /* Pause animation on hover */
         .marquee-container:hover .marquee-track {
             animation-play-state: paused;
         }
@@ -113,6 +115,29 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
+
+        /* mobile fix */
+        @media (max-width: 768px) {
+            .hero-text {
+                font-size: 15vw; 
+                letter-spacing: 5px; 
+            }
+
+            .marquee-text {
+                font-size: 3rem; 
+            }
+
+            .btn-group {
+                flex-direction: column; 
+                gap: 10px;
+                width: 100%;
+            }
+
+            .bare-btn {
+                width: 200px; 
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -125,8 +150,13 @@
         <div class="btn-group">
             <a href="https://www.instagram.com/gliznik.ent" target="_blank" class="bare-btn">Instagram</a>
             <a href="https://www.youtube.com/@gliznik" target="_blank" class="bare-btn">YouTube</a>
+            <a href="https://discord.gg/vhau9fus" target="_blank" class="bare-btn">Discord</a>
         </div>
     </div>
+
+    <audio id="bg-music" loop>
+        <source src="dance-ass.mp3" type="audio/mpeg">
+    </audio>
 
     <a href="/image" class="marquee-container">
         <div class="marquee-track">
@@ -135,5 +165,18 @@
         </div>
     </a>
 
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bg-music');
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    document.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
